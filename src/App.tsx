@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
+import Main from './components/Main/Main'
 
 class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1 className="text-3xl font-bold underline">Hello world</h1>
+        <Main />
       </div>
     );
   }
