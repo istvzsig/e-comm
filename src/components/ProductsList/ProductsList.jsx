@@ -8,24 +8,15 @@ import {
   CardBody,
   CardFooter,
   Typography,
-  Button,
 } from "@material-tailwind/react";
 
 class ProductsList extends React.Component {
-
-  componentDidMount() {
-    // const products = this.props.useSelector(state => state.products.filteredProducts)
-    console.log(this.props, storeData)
-    // console.log(this.props.filteredProducts)
-  }
-
   render() {
+    console.log(this.props.filteredProducts)
     return (
       <div className="flex flex-col bg-white py-12 relative z-[-1]">
-        <h1 className="text-black text-center font-bold pb-12 text-4xl">OUR PRODUCTS</h1>
         <div className="flex flex-wrap justify-center">
-
-          {storeData.map((item, index) => {
+          {this.props.filteredProducts.map((item, index) => {
             return <Card key={index} className="mt-12 w-96 mx-6 cursor-poinder grayscale-0 hover:grayscale">
               <CardHeader className="relative h-56">
                 <img
@@ -53,5 +44,5 @@ class ProductsList extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ filteredProducts: state.products });
+const mapStateToProps = state => ({ filteredProducts: state.products.filteredProducts });
 export default connect(mapStateToProps)(ProductsList);

@@ -4,7 +4,8 @@ import { storeData } from '../../assets/data/storeData';
 export const productsSlice = createSlice({
   name: 'products',
   initialState: {
-    filteredProducts: JSON.parse(sessionStorage.getItem('filtered-product-data')) || storeData,
+    allProducts: storeData,
+    filteredProducts: JSON.parse(sessionStorage.getItem('products-data')) || storeData,
   },
   reducers: {
     filterProducts(state, action) {
@@ -12,13 +13,17 @@ export const productsSlice = createSlice({
         const filter = storeData.filter(product => product.type === action.payload);
         state.filteredProducts = filter;
         const saveState = JSON.stringify(filter);
-        sessionStorage.setItem('filtered-product-data', saveState);
+        sessionStorage.setItem('products-data', saveState);
       } catch (err) {
         return err;
       }
-    }
+    },
+    resetFilter(state) {
+      state.filteredProducts = state.allProducts; // Reset filtered products to all products
+      sessionStorage.removeItem('products-data');
+    },
   }
 });
 
-export const { filterProducts } = productsSlice.actions;
+export const { filterProducts, resetFilter } = productsSlice.actions;
 export default productsSlice.reducer;

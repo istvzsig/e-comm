@@ -1,6 +1,6 @@
 import React from "react";
 import featuredSpaceSuit from '../../assets/img/featured-space-suit.png';
-import { filterProducts } from "../../features/slices/productsSlice";
+import { filterProducts, resetFilter } from "../../features/slices/productsSlice";
 import { connect } from 'react-redux';
 
 class FilterNavigation extends React.Component {
@@ -8,8 +8,12 @@ class FilterNavigation extends React.Component {
     this.props.dispatch(filterProducts(itemType));
   }
 
+  showAllProducts = () => {
+    this.props.dispatch(resetFilter()); // Dispatch resetFilter action
+  }
+
   render() {
-    const buttons = ['Spacehips', 'Planets', 'Suits', 'Badges', 'Boots', 'Helmets', 'Gloves', 'Accessories'];
+    const itemTypes = ['All', 'Spacehips', 'Planets', 'Suits', 'Badges', 'Boots', 'Helmets', 'Gloves', 'Accessories'];
     return (
       <div className="overflow-hidden bg-white relative z-1">
         <h1 className="text-black text-center font-bold py-12 text-8xl">PRODUCTS LIST</h1>
@@ -21,15 +25,16 @@ class FilterNavigation extends React.Component {
         <div className="flex justify-center py-10 pb-20 mb-0 overflow-hidden">
           <img className="rounded-xl md:w-[40%]  sm:w-[80%] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.5)] " src={featuredSpaceSuit} alt="featured-img" />
         </div>
+        <h1 className="text-black text-center font-bold pb-12 text-4xl">OUR PRODUCTS</h1>
         <div className="flex justify-center items-center py-8 px-8 overflow-scroll scrollbar-hide">
-          {buttons.map((item, index) => {
+          {itemTypes.map((itemType, index) => {
             return <div
               key={index}
-              onClick={() => this.filterProductsByType(item)}
+              onClick={() => itemType === 'All' ? this.showAllProducts() : this.filterProductsByType(itemType)}
               className="mr-8"
             >
               <button className="bg-none border-2 border-[#eee] text-[grey] px-8 py-4 rounded-lg text-[12px]">
-                {item.toUpperCase()}
+                {itemType.toUpperCase()}
               </button>
             </div>
           })}
