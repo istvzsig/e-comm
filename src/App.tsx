@@ -1,12 +1,22 @@
 import React from "react";
 import "./App.css";
-import Main from './components/Main/Main'
+import Main from './components/Main/Main';
+import FilterProducts from './components/FilterProducts/FilterProducts';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <Main />
+      <div>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route
+              path="/filteredProducts/:type"
+              element={<FilterProducts />}>
+            </Route>
+          </Routes>
+        </BrowserRouter>
       </div>
     );
   }
