@@ -4,8 +4,8 @@ import logo from '../../assets/img/logo.png';
 class Navbar extends React.Component {
   render() {
     return (
-      <div>
-        <nav className="w-full flex justify-between items-center px-[2em]">
+      <div className="sticky top-0 z-1 bg-white">
+        <nav className="w-full flex justify-between z-1111 items-center px-[2em]">
           <img className="h-[55px] my-2" src={logo} alt="logo" />
           <ul className="flex">
             <li className="flex mx-2">

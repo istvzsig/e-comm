@@ -3,6 +3,8 @@ import { startAnimation, stopAnimation } from "../../features/slices/sliderSlice
 import { connect } from 'react-redux';
 import { dummyData } from "../../assets/data/dummyData";
 
+const UPDATE_DELAY = 4000;
+
 class Slider extends React.Component {
   componentDidMount() {
     this.animate();
@@ -17,14 +19,14 @@ class Slider extends React.Component {
       const nextIndex = (slideIndex + 1) % dummyData.length; // Calculate the next index with wrapping
       this.props.dispatch(stopAnimation(nextIndex));
       // Trigger the animation again after a short delay
-      setTimeout(this.animate, 4000);
-    }, 4000);
+      setTimeout(this.animate, UPDATE_DELAY);
+    }, UPDATE_DELAY);
   }
 
   render() {
     const { slideIndex } = this.props;
     return (
-      <div className="relative bg-[#ffa555] h-[500px] overflow-hidden">
+      <div className="relative bg-[#ffa555] h-[500px] overflow-hidden z-[-1]">
         <div>
           {dummyData.map((item, index) => (
             <div
