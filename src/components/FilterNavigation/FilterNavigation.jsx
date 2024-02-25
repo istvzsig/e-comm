@@ -1,4 +1,5 @@
 import React from "react";
+import FilterProducts from '../FilterProducts/FilterProducts';
 import featuredSpaceSuit from '../../assets/img/featured-space-suit.png';
 import { filterProducts } from "../../features/slices/productsSlice";
 import { connect } from 'react-redux';
@@ -14,6 +15,14 @@ class FilterNavigation extends React.Component {
     return (
       <div className="overflow-hidden bg-white">
         <h1 className="text-black text-center font-bold py-12 text-8xl">PRODUCTS LIST</h1>
+        <div className="text-center py-3 skew-x-[-12deg]">
+          <h1 className="bg-black text-white inline p-3 px-20 font-bold text-3xl">
+            SALES UP TO 50%
+          </h1>
+        </div>
+        <div className="flex justify-center py-10 pb-20 mb-0 overflow-hidden">
+          <img className="rounded-xl md:w-[40%]  sm:w-[80%] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.5)] " src={featuredSpaceSuit} alt="featured-img" />
+        </div>
         <div className="flex justify-center items-center py-8 px-8 overflow-scroll scrollbar-hide">
           {buttons.map((item, index) => {
             return <div
@@ -27,14 +36,7 @@ class FilterNavigation extends React.Component {
             </div>
           })}
         </div>
-        <div className="text-center py-3 skew-x-[-12deg]">
-          <h1 className="bg-black text-white inline p-3 px-20 font-bold text-3xl">
-            SALES UP TO 50%
-          </h1>
-        </div>
-        <div className="flex justify-center py-10 pb-20 mb-0 overflow-hidden">
-          <img className="rounded-xl w-[50%] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.5)] " src={featuredSpaceSuit} alt="featured-img" />
-        </div>
+        <FilterProducts />
       </div>
     )
   }

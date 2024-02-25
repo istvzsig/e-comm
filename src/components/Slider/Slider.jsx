@@ -35,7 +35,7 @@ class Slider extends React.Component {
               <div className="">
                 <img className="align-middle" src={item.img} alt="space" />
               </div>
-              <div className="absolute top-[50%] left-[50%] text-white font-bold text-[15vw] text-center translate-x-[-50%] translate-y-[-50%]">
+              <div className="absolute top-[50%] left-[50%] text-white font-bold text-[15vw] text-center translate-x-[-50%] translate-y-[-45%]">
                 <h3>{item.text.toUpperCase()}</h3>
               </div>
             </div>
