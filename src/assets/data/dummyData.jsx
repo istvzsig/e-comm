@@ -8,22 +8,22 @@ export const dummyData = [
   {
     id: 0,
     img: img1,
-    text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
+    text: 'Race'
   },
   {
     id: 1,
     img: img2,
-    text: 'Outer Space Backgrounds.'
+    text: 'From'
   },
   {
     id: 2,
     img: img3,
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.'
+    text: 'Another'
   },
   {
     id: 3,
     img: img4,
-    text: 'Space Desktop Backgrounds'
+    text: 'Space'
   },
 ];
 
