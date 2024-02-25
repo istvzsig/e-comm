@@ -5,21 +5,20 @@ export const sliderSlice = createSlice({
   initialState: {
     value: 0,
     length: 3,
+    animating: false, // State to track animation
   },
   reducers: {
-    nextSlide(state, action) {
-      console.log({ ...state, ...action });
-      state.value = action.payload > state.length ? 0 : action.payload;
+    // Reducer to trigger animation
+    startAnimation(state) {
+      state.animating = true;
     },
-    prevSlide(state, action) {
-      console.log({ ...state, ...action });
-      state.value = action.payload < 0 ? state.length : action.payload;
-    },
-    animSlide(state, action) {
-      state.value = action.payload > state.length ? 0 : action.payload;
+    // Reducer to stop animation and set the final slide
+    stopAnimation(state, action) {
+      state.animating = false;
+      state.value = action.payload;
     }
   },
 });
 
-export const { nextSlide, prevSlide, dotSlide, animSlide } = sliderSlice.actions;
+export const { nextSlide, prevSlide, startAnimation, stopAnimation } = sliderSlice.actions;
 export default sliderSlice.reducer;
