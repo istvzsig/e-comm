@@ -1,6 +1,9 @@
 import React from "react";
-import { startAnimation, stopAnimation } from "../../features/slices/sliderSlice";
-import { connect } from 'react-redux';
+import {
+  startAnimation,
+  stopAnimation,
+} from "../../features/slices/sliderSlice";
+import { connect } from "react-redux";
 import { dummyData } from "../../assets/data/dummyData";
 
 const UPDATE_DELAY = 4000;
@@ -21,17 +24,25 @@ class Slider extends React.Component {
       // Trigger the animation again after a short delay
       setTimeout(this.animate, UPDATE_DELAY);
     }, UPDATE_DELAY);
-  }
+  };
 
   render() {
     const { slideIndex } = this.props;
     return (
-      <div className="sticky top-[71px] translate-y-[-71px] relative bg-[#ffa555] h-[500px] overflow-hidden z-[-1]">
+      <div
+        id="slider"
+        className="sticky top-[71px] translate-y-[-71px] relative bg-[#ffa555]overflow-hidden h-[100vh] z-[-1]"
+      >
         <div>
           {dummyData.map((item, index) => (
             <div
               key={index}
-              className={`absolute opacity-${item.id === slideIndex ? '100' : '0'} duration-700 ease-in-out scale-${item.id === slideIndex ? '100' : '105'}`}>
+              className={`absolute opacity-${
+                item.id === slideIndex ? "100" : "0"
+              } duration-700 ease-in-out scale-${
+                item.id === slideIndex ? "100" : "105"
+              }`}
+            >
               <div className="">
                 <img className="align-middle" src={item.img} alt="space" />
               </div>
@@ -41,12 +52,26 @@ class Slider extends React.Component {
             </div>
           ))}
         </div>
-
-
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 55 55"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+            />
+          </svg>
+        </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({ slideIndex: state.slider.value });
+const mapStateToProps = (state) => ({ slideIndex: state.slider.value });
 export default connect(mapStateToProps)(Slider);

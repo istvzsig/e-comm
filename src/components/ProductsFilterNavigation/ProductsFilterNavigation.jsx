@@ -11,16 +11,17 @@ class FilterNavigation extends React.Component {
     super();
     this.state = {
       activeItem: "All",
+      activeButton: "All",
     };
   }
   filterProductsByType = (itemType) => {
     this.props.dispatch(filterProducts(itemType));
-    this.setState({ activeItem: itemType });
+    this.setState({ activeItem: itemType, activeButton: itemType });
   };
 
   showAllProducts = () => {
     this.props.dispatch(resetFilter());
-    this.setState({ activeItem: "All" });
+    this.setState({ activeItem: "All", activeButton: "All" });
   };
 
   render() {
@@ -38,7 +39,7 @@ class FilterNavigation extends React.Component {
       "Accessories",
     ];
     return (
-      <div className="overflow-hidden bg-white relative z-1">
+      <div className="overflow-hidden bg-white relative top-[100px] z-1">
         <h1 className="text-black text-center font-bold py-12 text-8xl">
           PRODUCTS LIST
         </h1>

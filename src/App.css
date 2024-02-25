@@ -7,3 +7,12 @@
 body {
   overflow-x: hidden !important;
 }
+
+.card {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card.hidden {
+  opacity: 0;
+}

@@ -1,7 +1,5 @@
 import React from "react";
-import spaceSuit from "../../assets/img/featured-space-suit.png";
-import { connect, useSelector } from "react-redux";
-import { storeData } from "../../assets/data/storeData";
+import { connect } from "react-redux";
 import {
   Card,
   CardHeader,
@@ -36,7 +34,6 @@ class ProductsList extends React.Component {
                       {item.type}
                     </Typography>
                   </Typography>
-
                   <Typography>{item.text}</Typography>
                 </CardBody>
                 <CardFooter className="pt-0 flex">
