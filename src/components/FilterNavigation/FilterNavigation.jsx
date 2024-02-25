@@ -1,19 +1,17 @@
 import React from "react";
-import FilterProducts from '../FilterProducts/FilterProducts';
 import featuredSpaceSuit from '../../assets/img/featured-space-suit.png';
 import { filterProducts } from "../../features/slices/productsSlice";
 import { connect } from 'react-redux';
 
 class FilterNavigation extends React.Component {
   filterProductsByType = (itemType) => {
-    console.log(this.props.filteredProducts)
     this.props.dispatch(filterProducts(itemType));
   }
 
   render() {
     const buttons = ['Spacehips', 'Planets', 'Suits', 'Badges', 'Boots', 'Helmets', 'Gloves', 'Accessories'];
     return (
-      <div className="overflow-hidden bg-white">
+      <div className="overflow-hidden bg-white relative z-1">
         <h1 className="text-black text-center font-bold py-12 text-8xl">PRODUCTS LIST</h1>
         <div className="text-center py-3 skew-x-[-12deg]">
           <h1 className="bg-black text-white inline p-3 px-20 font-bold text-3xl">
@@ -36,7 +34,6 @@ class FilterNavigation extends React.Component {
             </div>
           })}
         </div>
-        <FilterProducts />
       </div>
     )
   }

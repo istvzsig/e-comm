@@ -13,13 +13,12 @@ class Navbar extends React.Component {
       } else {
         this.scrolled = false
       }
-      console.log(this.scrolled)
     });
   }
 
   render() {
     return (
-      <div className={`sticky top-0 z-1 backdrop-blur-md text-white ${this.scrolled ? "bg-[rgba(255,255,255,1)]" : "bg-[rgba(0,0,0,.4)]"}`}>
+      <div className={`sticky top-0 z-10 backdrop-blur-md text-white ${this.scrolled ? "bg-[rgba(255,255,255,1)]" : "bg-[rgba(0,0,0,.4)]"}`}>
         <nav className="w-full flex justify-between z-1111 items-center px-[2em]">
           <img className="h-[55px] my-2" src={logo} alt="logo" />
           <ul className="flex">

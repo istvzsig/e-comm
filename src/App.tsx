@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Main from './components/Main/Main';
-import FilterProducts from './components/FilterProducts/FilterProducts';
+import ProductsList from './components/ProductsList/ProductsList';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
 class App extends React.Component {
@@ -13,7 +13,7 @@ class App extends React.Component {
             <Route path="/" element={<Main />} />
             <Route
               path="/filteredProducts/:type"
-              element={<FilterProducts />}>
+              element={<ProductsList />}>
             </Route>
           </Routes>
         </BrowserRouter>

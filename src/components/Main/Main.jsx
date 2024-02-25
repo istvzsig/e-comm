@@ -2,6 +2,8 @@ import React from "react";
 import Navbar from "../Navbar/Navbar";
 import Slider from "../Slider/Slider";
 import FilterNavigation from "../FilterNavigation/FilterNavigation";
+import ProductsList from '../ProductsList/ProductsList';
+
 class Main extends React.Component {
 
   render() {
@@ -10,6 +12,7 @@ class Main extends React.Component {
         <Navbar />
         <Slider />
         <FilterNavigation />
+        <ProductsList />
       </>
     );
   }
