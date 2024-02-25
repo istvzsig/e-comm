@@ -27,7 +27,7 @@ class Navbar extends React.Component {
             </li>
           </ul>
         </nav >
-        <div className="bg-black flex flex-wrap p-3 justify-center">
+        <div className="hidden bg-black flex flex-wrap p-3 justify-center">
           <p className="text-white font-inter text-base font-medium px-2">50& OFF</p>
           <p className="text-white font-inter text-base font-medium mx-96">Free shipping returns</p>
           <p className="text-white font-inter text-base font-medium ">Diffrent payment methods</p>
