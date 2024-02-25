@@ -26,7 +26,7 @@ class Slider extends React.Component {
   render() {
     const { slideIndex } = this.props;
     return (
-      <div className="relative bg-[#ffa555] h-[500px] overflow-hidden z-[-1]">
+      <div className="sticky top-[71px] translate-y-[-71px] relative bg-[#ffa555] h-[500px] overflow-hidden z-[-1]">
         <div>
           {dummyData.map((item, index) => (
             <div

@@ -12,7 +12,8 @@ class FilterNavigation extends React.Component {
   render() {
     const buttons = ['Spacehips', 'Planets', 'Suits', 'Badges', 'Boots', 'Helmets', 'Gloves', 'Accessories'];
     return (
-      <div className="overflow-hidden">
+      <div className="overflow-hidden bg-white">
+        <h1 className="text-black text-center font-bold py-12 text-8xl">PRODUCTS LIST</h1>
         <div className="flex justify-center items-center py-8 px-8 overflow-scroll scrollbar-hide">
           {buttons.map((item, index) => {
             return <div
