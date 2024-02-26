@@ -14,6 +14,7 @@ class FilterNavigation extends React.Component {
       activeButton: "All",
     };
   }
+
   filterProductsByType = (itemType) => {
     this.props.dispatch(filterProducts(itemType));
     this.setState({ activeItem: itemType, activeButton: itemType });
@@ -58,7 +59,7 @@ class FilterNavigation extends React.Component {
         <h1 className="text-black text-center font-bold pb-12 text-4xl">
           OUR PRODUCTS
         </h1>
-        <div className="flex justify-center items-center py-8 px-8 overflow-scroll scrollbar-hide">
+        <div className="flex justify-center items-center py-8 px-8 overflow-scroll scrollbar-hide relative z-[1]">
           {itemTypes.map((itemType, index) => {
             return (
               <div

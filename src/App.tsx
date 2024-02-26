@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Main from './components/Main/Main';
-import ProductsList from './components/ProductsList/ProductsList';
+import Product from './components/Product/Product';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
 class App extends React.Component {
@@ -12,8 +12,8 @@ class App extends React.Component {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route
-              path="/filteredProducts/:type"
-              element={<ProductsList />}>
+              path="/product/:type/:id"
+              element={<Product />}>
             </Route>
           </Routes>
         </BrowserRouter>
