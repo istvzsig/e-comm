@@ -40,26 +40,26 @@ class FilterNavigation extends React.Component {
       "Accessories",
     ];
     return (
-      <div className="overflow-hidden bg-white relative top-[100px] z-1">
+      <div className="overflow-hidden relative z-1">
         <h1 className="text-black text-center font-bold py-12 text-8xl">
           PRODUCTS LIST
         </h1>
-        <div className="text-center py-3 skew-x-[-12deg]">
+        <div className="text-center skew-x-[-12deg] my-12 mb-24">
           <h1 className="bg-black text-white inline p-3 px-20 font-bold text-3xl">
             SALES UP TO 50%
           </h1>
         </div>
-        <div className="flex justify-center py-10 pb-20 mb-0 overflow-hidden">
+        <div className="flex justify-center overflow-hidden mb-12">
           <img
             className="rounded-xl md:w-[40%]  sm:w-[80%] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.5)] "
             src={featuredSpaceSuit}
             alt="featured-img"
           />
         </div>
-        <h1 className="text-black text-center font-bold pb-12 text-4xl">
+        <h1 className="text-black text-center font-bold mb-12 text-4xl">
           OUR PRODUCTS
         </h1>
-        <div className="flex justify-center items-center py-8 px-8 overflow-scroll scrollbar-hide relative z-[1]">
+        <div className="flex justify-center items-center pb-5 overflow-scroll scrollbar-hide relative z-[1]">
           {itemTypes.map((itemType, index) => {
             return (
               <div
@@ -87,5 +87,7 @@ class FilterNavigation extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({ filteredProducts: state.products });
+const mapStateToProps = (state) => ({
+  filteredProducts: state.products.filteredProducts,
+});
 export default connect(mapStateToProps)(FilterNavigation);

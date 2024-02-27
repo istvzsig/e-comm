@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "../Navbar/Navbar";
 import Slider from "../Slider/Slider";
-import ProductsFilterNavigation from "../ProductsFilterNavigation/ProductsFilterNavigation";
-import ProductsList from "../ProductsList/ProductsList";
+
+import ProductList from "../Product/ProductList";
 
 class Main extends React.Component {
   render() {
@@ -10,8 +10,7 @@ class Main extends React.Component {
       <>
         <Navbar />
         <Slider />
-        <ProductsFilterNavigation />
-        <ProductsList />
+        <ProductList />
       </>
     );
   }

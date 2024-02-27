@@ -1,11 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getProduct } from "../../features/slices/productsSlice";
 
-class Product extends React.Component {
+class ProductPage extends React.Component {
   render() {
-    const product = this.props.product;
-    console.log(product);
+    const [product] = this.props.product;
+
     return (
       <div className="w-full py-12">
         <h1 className="text-black text-center font-bold text-6xl">
@@ -20,10 +19,10 @@ class Product extends React.Component {
           alt="product-image"
         />
         {/* <img
-          className="m-auto scale-[2] absolute top-0 w-full z-[-1] blur-[3px] opacity-[20%]"
-          src={product.img}
-          alt="product-image"
-        /> */}
+            className="m-auto scale-[2] absolute top-0 w-full z-[-1] blur-[3px] opacity-[20%]"
+            src={product.img}
+            alt="product-image"
+          /> */}
         <div className="flex w-[70%] m-auto justify-between mt-2">
           <div className="flex items-center">
             {product.sizes.map((size, index) => {
@@ -59,4 +58,4 @@ class Product extends React.Component {
 const mapStateToProps = (state) => ({
   product: state.products.product,
 });
-export default connect(mapStateToProps)(Product);
+export default connect(mapStateToProps)(ProductPage);
