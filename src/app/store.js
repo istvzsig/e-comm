@@ -1,10 +1,10 @@
+import sliderReducer from '../features/slices/sliderSlice';
+import productsReducer from "../features/slices/productsSlice";
 import { configureStore } from "@reduxjs/toolkit";
-import sliderSlice from '../features/slices/sliderSlice';
-import productsSlice from "../features/slices/productsSlice";
 
 export const store = configureStore({
   reducer: {
-    slider: sliderSlice,
-    products: productsSlice
+    slider: sliderReducer,
+    products: productsReducer
   },
 });
