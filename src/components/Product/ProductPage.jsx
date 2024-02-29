@@ -31,25 +31,25 @@ class ProductPage extends React.Component {
   }
 
   render() {
-    const [product] = this.props.product;
+    const [item] = this.props.product;
 
     return (
       <div className="flex flex-col md:flex-row h-[100vh] justify-center items-center p-12">
         <div className="flex flex-col m-8 w-[300px]">
           <img
             className="relative z-[1] rounded-[1em] self-center w-[100%] max-w-[300px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.5)]"
-            src={product.img}
-            alt="product-image"
+            src={item.img}
+            alt="item-image"
           />
         </div>
         <div className="flex flex-col max-w-[33%] md:max-w-[100]">
-          <h1 className="font-bold text-3xl mb-2">{product.name}</h1>
+          <h1 className="font-bold text-3xl mb-2">{item.name}</h1>
           <h3 className="text-[#ffa555] font-bold mb-2">0% OFF</h3>
           <p className="relative z-[-1] text-[1em] text-[grey] py-4">
-            {product.text}
+            {item.text}
           </p>
           <div>
-            {product.sizes ? (
+            {item.sizes ? (
               <div className="mb-2">
                 <label
                   htmlFor="sizes"
@@ -65,7 +65,7 @@ class ProductPage extends React.Component {
                   value={this.state.size}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >
-                  {product.sizes.map((size, index) => {
+                  {item.sizes.map((size, index) => {
                     return (
                       <option key={index} value={size}>
                         {size}
@@ -86,8 +86,8 @@ class ProductPage extends React.Component {
               Select color:
             </label>
             <div className="flex items-center">
-              {product.colors
-                ? product.colors.map((color, index) => {
+              {item.colors
+                ? item.colors.map((color, index) => {
                     return (
                       <div key={index} className="flex items-center mr-2">
                         <button onClick={() => this.setActiveColor(color)}>
@@ -111,9 +111,9 @@ class ProductPage extends React.Component {
                 : false}
             </div>
             <h1 className="text-black text-left font-bold text-6xl my-4 mb-0">
-              {product.price !== "FREE" ? `$${product.price}` : product.price}
+              {item.price !== "FREE" ? `$${item.price}` : item.price}
               <span className="text-[20px] text-black font-bold self-start relative top-[-30px] left-[2px]">
-                {product.price == "FREE" ? "" : "USD"}
+                {item.price == "FREE" ? "" : "USD"}
               </span>
             </h1>
             <button className="font-bold text-[12px] bg-[blue] p-4  my-4 text-white rounded-lg">
