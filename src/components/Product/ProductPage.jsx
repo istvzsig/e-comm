@@ -87,7 +87,7 @@ class ProductPage extends React.Component {
                 ? item.colors.map((color, index) => {
                     return (
                       <div key={index} className="flex items-center mr-2">
-                        <button onClick={() => this.setcolor(color)}>
+                        <button onClick={() => this.setColor(color)}>
                           <div
                             style={{
                               width: "24px",
