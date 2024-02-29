@@ -1,4 +1,5 @@
 import React from "react";
+import { addToCart } from "../../features/slices/cartSlice";
 import { connect } from "react-redux";
 
 class ProductPage extends React.Component {
@@ -6,7 +7,7 @@ class ProductPage extends React.Component {
     super();
     this.state = {
       size: "M",
-      activeColor: "",
+      color: "",
     };
   }
 
@@ -16,22 +17,18 @@ class ProductPage extends React.Component {
     });
   }
 
-  setActiveColor(color) {
+  setColor(color) {
     this.setState({
-      activeColor: color,
+      color: color,
     });
   }
 
   componentDidMount() {
-    console.log(this.state);
-  }
-
-  componentDidUpdate() {
-    console.log(this.state);
+    console.log(this.props.cart);
   }
 
   render() {
-    const [item] = this.props.product;
+    const [item] = this.props.item;
 
     return (
       <div className="flex flex-col md:flex-row h-[100vh] justify-center items-center p-12">
@@ -43,9 +40,9 @@ class ProductPage extends React.Component {
           />
         </div>
         <div className="flex flex-col max-w-[33%] md:max-w-[100]">
-          <h1 className="font-bold text-3xl mb-2">{item.name}</h1>
-          <h3 className="text-[#ffa555] font-bold mb-2">0% OFF</h3>
-          <p className="relative z-[-1] text-[1em] text-[grey] py-4">
+          <h1 className="font-bold text-3xl">{item.name}</h1>
+          <h3 className="text-[#ffa555] font-bold mb-1">0% OFF</h3>
+          <p className="relative z-[-1] text-[1em] text-[grey] mb-2">
             {item.text}
           </p>
           <div>
@@ -53,7 +50,7 @@ class ProductPage extends React.Component {
               <div className="mb-2">
                 <label
                   htmlFor="sizes"
-                  className="block mb-2 text-[12px] font-light text-grey-400"
+                  className="block text-[12px] font-light text-grey-400"
                 >
                   Pick your size:
                 </label>
@@ -90,7 +87,7 @@ class ProductPage extends React.Component {
                 ? item.colors.map((color, index) => {
                     return (
                       <div key={index} className="flex items-center mr-2">
-                        <button onClick={() => this.setActiveColor(color)}>
+                        <button onClick={() => this.setcolor(color)}>
                           <div
                             style={{
                               width: "24px",
@@ -98,7 +95,7 @@ class ProductPage extends React.Component {
                               backgroundColor: color,
                               borderRadius: "50%",
                               boxShadow: `0 0 0 2px white, 0 0 0 4px ${
-                                this.state.activeColor === color
+                                this.state.color === color
                                   ? "blue"
                                   : "transparent"
                               }`,
@@ -116,7 +113,13 @@ class ProductPage extends React.Component {
                 {item.price == "FREE" ? "" : "USD"}
               </span>
             </h1>
-            <button className="font-bold text-[12px] bg-[blue] p-4  my-4 text-white rounded-lg">
+            <button
+              onClick={() => {
+                const { size, color } = this.state;
+                this.props.dispatch(addToCart({ size, color, ...item }));
+              }}
+              className="font-bold text-[12px] bg-[blue] p-4  my-4 text-white rounded-lg"
+            >
               ADD TO CART
             </button>
           </div>
@@ -128,6 +131,7 @@ class ProductPage extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  product: state.products.product,
+  item: state.products.product,
+  cart: state.cart,
 });
 export default connect(mapStateToProps)(ProductPage);
