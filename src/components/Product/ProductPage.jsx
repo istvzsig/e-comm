@@ -24,7 +24,7 @@ class ProductPage extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.cart);
+    // console.log(this.props.cart);
   }
 
   render() {

@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../../assets/img/logo-white.png";
+import { connect } from "react-redux";
 
 class Navbar extends React.Component {
   constructor() {
@@ -10,6 +11,7 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props.cart.totalAmount);
     window.addEventListener("scroll", this.handleScroll);
   }
 
@@ -59,6 +61,10 @@ class Navbar extends React.Component {
               <p className="pl-2">Wish List</p>
             </li>
             <li className="flex mx-2">
+              <p className="bg-[blue] w-[24px] text-center rounded-[50%]">
+                {this.props.cart.totalAmount}
+              </p>
+
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -93,4 +99,7 @@ class Navbar extends React.Component {
   }
 }
 
-export default Navbar;
+const mapStateToProps = (state) => ({
+  cart: state.cart,
+});
+export default connect(mapStateToProps)(Navbar);
