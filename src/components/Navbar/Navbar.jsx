@@ -11,7 +11,6 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.cart.totalAmount);
     window.addEventListener("scroll", this.handleScroll);
   }
 
@@ -29,6 +28,7 @@ class Navbar extends React.Component {
 
   render() {
     const { scrolled } = this.state;
+    const { cartTotalAmount } = this.props;
 
     return (
       <div
@@ -37,14 +37,14 @@ class Navbar extends React.Component {
           scrolled ? "bg-[rgba(0,0,0,1)]" : "bg-[rgba(0,0,0,.4)]"
         }`}
       >
-        <nav className="w-full flex justify-between z-1111 items-center px-[2em]">
+        <nav className="w-full flex justify-between z-1111 items-center px-[2em] font-bold">
           <img className="h-[55px] my-2" src={logo} alt="logo" />
           <ul className="flex">
             <li className="flex mx-2">
-              <button>Logout</button>
+              <button>SIGN IN</button>
             </li>
             <li className="flex mx-2">
-              <svg
+              {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -57,12 +57,12 @@ class Navbar extends React.Component {
                   strokeLinejoin="round"
                   d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
                 />
-              </svg>
-              <p className="pl-2">Wish List</p>
+              </svg> */}
+              <p className="pl-2">WHIST LIST</p>
             </li>
             <li className="flex mx-2">
               <p className="bg-[blue] w-[24px] text-center rounded-[50%] relative left-[40px] top-[-10px] text-[14px]">
-                {this.props.cart.totalAmount}
+                {cartTotalAmount}
               </p>
 
               <svg
@@ -100,6 +100,6 @@ class Navbar extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  cart: state.cart,
+  cartTotalAmount: state.cart.totalAmount,
 });
 export default connect(mapStateToProps)(Navbar);

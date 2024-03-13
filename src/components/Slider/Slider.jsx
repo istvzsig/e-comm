@@ -15,7 +15,6 @@ class Slider extends React.Component {
 
   animate = () => {
     const { slideIndex } = this.props;
-    // Dispatch the startAnimation action to trigger the animation
     this.props.dispatch(startAnimation());
     // After a delay, stop the animation and move to the next slide
     setTimeout(() => {

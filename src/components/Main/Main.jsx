@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../Navbar/Navbar";
+import Cart from "../Cart/Cart";
 import Slider from "../Slider/Slider";
 
 import ProductList from "../Product/ProductList";
@@ -9,6 +10,7 @@ class Main extends React.Component {
     return (
       <>
         <Navbar />
+        <Cart />
         <Slider />
         <ProductList />
       </>

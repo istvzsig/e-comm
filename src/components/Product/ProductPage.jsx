@@ -132,6 +132,6 @@ class ProductPage extends React.Component {
 
 const mapStateToProps = (state) => ({
   item: state.products.product,
-  cart: state.cart,
+  cart: state.cart.items,
 });
 export default connect(mapStateToProps)(ProductPage);
