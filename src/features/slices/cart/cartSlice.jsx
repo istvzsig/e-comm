@@ -1,25 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {
+  calcCartTotalPrice,
+  setCartToSessionStore,
+  getCartFromSessionStorage,
+} from "./cart.js";
 
-function calcCartTotalPrice(items) {
-  return items.reduce((total, item) => {
-    return total + item.price;
-  }, 0);
-}
-
-function setCartToSessionStore(key, items) {
-  sessionStorage.setItem(key, JSON.stringify(items));
-}
-
-function getCartFromSession(key) {
-  return JSON.parse(sessionStorage.getItem(key));
-}
+const SESSION_STORE = getCartFromSessionStorage("cart");
 
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    items: getCartFromSession("cart") || [],
-    totalAmount: getCartFromSession("cart").length || 0,
-    totalPrice: calcCartTotalPrice(getCartFromSession("cart")) || 0,
+    items: SESSION_STORE,
+    totalAmount: SESSION_STORE.length || 0,
+    totalPrice: calcCartTotalPrice(SESSION_STORE) || 0,
   },
   reducers: {
     addToCart(state, action) {

@@ -1,5 +1,5 @@
 import React from "react";
-import { addToCart } from "../../features/slices/cartSlice";
+import { addToCart } from "../../features/slices/cart/cartSlice";
 import { connect } from "react-redux";
 
 class ProductPage extends React.Component {
