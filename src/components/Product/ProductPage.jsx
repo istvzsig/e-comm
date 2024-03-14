@@ -1,5 +1,5 @@
 import React from "react";
-import { addToCart } from "../../features/slices/cart/cartSlice";
+import { addItemToCart } from "../../features/slices/cart/cartSlice";
 import { connect } from "react-redux";
 
 class ProductPage extends React.Component {
@@ -116,7 +116,7 @@ class ProductPage extends React.Component {
             <button
               onClick={() => {
                 const { size, color } = this.state;
-                this.props.dispatch(addToCart({ size, color, ...item }));
+                this.props.dispatch(addItemToCart({ size, color, ...item }));
               }}
               className="font-bold text-[12px] bg-[blue] p-4  my-4 text-white rounded-lg"
             >

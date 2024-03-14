@@ -2,20 +2,20 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   calcCartTotalPrice,
   setCartToSessionStore,
-  getCartFromSessionStorage,
+  getCartFromSessionStore,
 } from "./cart.js";
 
-const SESSION_STORE = getCartFromSessionStorage("cart");
+const CART_ITEMS_SESSION_STORE = getCartFromSessionStore("cart");
 
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    items: SESSION_STORE,
-    totalAmount: SESSION_STORE.length || 0,
-    totalPrice: calcCartTotalPrice(SESSION_STORE) || 0,
+    items: CART_ITEMS_SESSION_STORE,
+    totalAmount: CART_ITEMS_SESSION_STORE.length || 0,
+    totalPrice: calcCartTotalPrice(CART_ITEMS_SESSION_STORE) || 0,
   },
   reducers: {
-    addToCart(state, action) {
+    addItemToCart(state, action) {
       const item = action.payload;
       try {
         const existingItem = state.items.find(
@@ -28,6 +28,7 @@ export const cartSlice = createSlice({
           existingItem.amount++;
           //   existingItem.totalPrice += item.price;
           state.totalAmount++;
+          console.log(item.price);
           state.totalPrice += item.price;
         } else {
           state.items.push({
@@ -46,5 +47,5 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addItemToCart } = cartSlice.actions;
 export default cartSlice.reducer;

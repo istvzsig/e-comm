@@ -9,7 +9,7 @@ class Cart extends React.Component {
     return (
       <div className="p-2 flex flex-col h-[100%] w-[240px] bg-[rgba(255,255,255,.8)] fixed top-[71px] right-0 z-10 text-[rgba(0,0,0,1)] backdrop-blur-md overflow-scoll">
         <h1 className="font-bold py-2 text-center text-[24px]">YOUR CART</h1>
-        <ul>
+        <ul className="overflow-y-scroll max-h-[60vh]">
           {cartItems.length ? (
             cartItems.map((item, index) => {
               return (
