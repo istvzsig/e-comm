@@ -6,11 +6,24 @@ import Slider from "../Slider/Slider";
 import ProductList from "../Product/ProductList";
 
 class Main extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isCartOpen: false,
+    };
+  }
+
+  toggleCart() {
+    this.setState((prevState) => ({
+      isCartOpen: !prevState.isCartOpen,
+    }));
+  }
+
   render() {
     return (
       <>
-        <Navbar />
-        <Cart />
+        <Navbar toggleCart={this.toggleCart.bind(this)} />
+        <Cart isOpened={this.state.isCartOpen} />
         <Slider />
         <ProductList />
       </>

@@ -4,11 +4,20 @@ import { connect } from "react-redux";
 class Cart extends React.Component {
   render() {
     const { cartItems } = this.props;
-    console.log(this.props);
 
     return (
-      <div className="p-2 flex flex-col h-[100%] w-[240px] bg-[rgba(255,255,255,.8)] fixed top-[71px] right-0 z-10 text-[rgba(0,0,0,1)] backdrop-blur-md overflow-scoll">
+      <div
+        className={`p-2 flex flex-col h-[100vh] w-[240px] bg-[rgba(255,255,255,1)] fixed top-[71px] z-10 text-[rgba(0,0,0,1)] backdrop-blur-md overflow-scoll transition ease-in-out right-0 ${
+          this.props.isOpened ? "translate-x-[0]" : "translate-x-[240px]"
+        }`}
+      >
         <h1 className="font-bold py-2 text-center text-[24px]">YOUR CART</h1>
+        <div>
+          <p className="font-bold py-2 text-[12px] text-center">TOTAL PRICE:</p>
+          <p className="font-bold text-[24px] text-center">
+            ${this.props.totalPrice} USD
+          </p>
+        </div>
         <ul className="overflow-y-scroll max-h-[60vh]">
           {cartItems.length ? (
             cartItems.map((item, index) => {
@@ -39,12 +48,6 @@ class Cart extends React.Component {
             <li>Empty</li>
           )}
         </ul>
-        <div>
-          <p className="font-bold py-2 text-[12px] text-center">TOTAL PRICE:</p>
-          <p className="font-bold text-[24px] text-center">
-            ${this.props.totalPrice} USD
-          </p>
-        </div>
       </div>
     );
   }
